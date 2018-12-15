@@ -1,5 +1,4 @@
-{% set version = '1.0.1' %}
-
+{% set version = '1.0.2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,16 +7,14 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: pkgload_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/pkgload_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/pkgload/pkgload_{{ version }}.tar.gz
-  sha256: 4861564200598dba71c61462b05c00ea9f365da12ff6ccf2fa4814abf656a056
+  sha256: 3186564e690fb05eabe76e1ac0bfd4312562c3ac8794b29f8850399515dcf27c
 
 build:
   merge_build_host: True  # [win]
   number: 1000
-
   rpaths:
     - lib/R/lib/
     - lib/
@@ -32,7 +29,6 @@ requirements:
     - {{posix}}sed               # [win]
     - {{posix}}coreutils         # [win]
     - {{posix}}zip               # [win]
-
   host:
     - r-base
     - r-desc
@@ -41,7 +37,6 @@ requirements:
     - r-rprojroot
     - r-rstudioapi
     - r-withr
-
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
@@ -74,3 +69,23 @@ extra:
     - jdblischak
     - cbrueffer
     - dbast
+
+# Package: pkgload
+# Title: Simulate Package Installation and Attach
+# Version: 1.0.2
+# Authors@R: c( person("Hadley", "Wickham", role = "aut"), person("Jim", "Hester", , "james.hester@rstudio.com", role = c("aut", "cre")), person("Winston", "Chang", role = "aut"), person("RStudio", role = "cph"), person("R Core team", role = "ctb", comment = "Some namespace and vignette code extracted from base R") )
+# Description: Simulates the process of installing a package and then attaching it. This is a key part of the 'devtools' package as it allows you to rapidly iterate while developing a package.
+# License: GPL-3
+# URL: https://github.com/r-lib/pkgload
+# BugReports: https://github.com/r-lib/pkgload/issues
+# Imports: desc, methods, pkgbuild, rlang, rprojroot, rstudioapi, utils, withr
+# Suggests: bitops, covr, Rcpp, testthat
+# Encoding: UTF-8
+# LazyData: true
+# RoxygenNote: 6.1.0
+# NeedsCompilation: yes
+# Packaged: 2018-10-29 19:56:19 UTC; jhester
+# Author: Hadley Wickham [aut], Jim Hester [aut, cre], Winston Chang [aut], RStudio [cph], R Core team [ctb] (Some namespace and vignette code extracted from base R)
+# Maintainer: Jim Hester <james.hester@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2018-10-29 20:30:03 UTC
