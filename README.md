@@ -206,6 +206,3 @@ Feedstock Maintainers
 * [@jdblischak](https://github.com/jdblischak/)
 * [@johanneskoester](https://github.com/johanneskoester/)
 
-
-<!-- dummy commit to enable rerendering -->
-
