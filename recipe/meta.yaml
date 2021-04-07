@@ -1,4 +1,4 @@
-{% set version = "1.2.0" %}
+{% set version = "1.2.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/pkgload_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/pkgload/pkgload_{{ version }}.tar.gz
-  sha256: fbc86b3e342928a02a7dd6b6a59dddbd9d3b3626fd44bb84c1cc6ef1d3c9bda0
+  sha256: e6277fdb2bd9058dbe3715cfb2dc548d7f08d586dceb44ea7de47770c19e173e
 
 build:
   merge_build_host: true  # [win]
@@ -21,10 +21,10 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('m2w64_cxx') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
@@ -32,8 +32,9 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-cli
+    - r-crayon
     - r-desc
-    - r-pkgbuild
     - r-rlang
     - r-rprojroot
     - r-rstudioapi
@@ -41,8 +42,9 @@ requirements:
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
+    - r-cli
+    - r-crayon
     - r-desc
-    - r-pkgbuild
     - r-rlang
     - r-rprojroot
     - r-rstudioapi
@@ -55,20 +57,15 @@ test:
 
 about:
   home: https://github.com/r-lib/pkgload
-  license: GPL-3
+  license: GPL-3.0-only
   summary: Simulates the process of installing a package and then attaching it. This is a key part of the 'devtools' package as it allows you to rapidly iterate while developing a package.
   license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
 
 # Package: pkgload
 # Title: Simulate Package Installation and Attach
