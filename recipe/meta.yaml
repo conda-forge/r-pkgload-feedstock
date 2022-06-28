@@ -24,7 +24,6 @@ requirements:
   build:
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
-    - r-rlang                      # [build_platform != target_platform]
   host:
     - r-base
     - r-cli >=3.3.0
