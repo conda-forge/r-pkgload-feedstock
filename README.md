@@ -1,11 +1,11 @@
-About r-pkgload
-===============
+About r-pkgload-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-pkgload-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/r-lib/pkgload
 
 Package license: GPL-3.0-only
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-pkgload-feedstock/blob/main/LICENSE.txt)
 
 Summary: Simulates the process of installing a package and then attaching it. This is a key part of the 'devtools' package as it allows you to rapidly iterate while developing a package.
 
